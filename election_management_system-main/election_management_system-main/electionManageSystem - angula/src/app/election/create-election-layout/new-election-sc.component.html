@@ -1,0 +1,156 @@
+<app-side-bar></app-side-bar>
+
+<div class="content">
+  <div class="py-4">
+    <div class="d-flex justify-content-between w-100 flex-wrap">
+      <div class=" mb-lg-0">
+        <h1 class="h4">Create New Election</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-xl-3 mt-3 p-lg-1 p-md-3 d-flex  justify-content-center">
+    <div class="col-xl-10 col-lg-10 col-md-11 card card-nav-tabs text-center welcome-sc">
+      <div class="card-body">
+        <div class="bg-white rounded">
+          <div class="election-type p-1">
+            <h5 class="mt-1 text-white">Please Select Votable Type</h5>
+          </div>
+          <div class="form-check mt-2 d-flex gap-5 justify-content-center">
+            <div class="form-check form-switch">
+              <input class="form-check-input" [(ngModel)]="candidate.votable" (change)="selectCandidate($event)" type="checkbox" id="flexSwitchCheckDefault">
+              <label class="form-check-label" for="flexSwitchCheckDefault">Candidate Votable</label>
+            </div>
+          </div>
+        </div>
+        <div class="card-header">
+          <h4 class="card-title mt-1">Enter Election Details</h4>
+        </div>
+        <div class="mt-2">
+          <div class="card-body">
+            <form #electionDetails="ngForm" (ngSubmit)="addElection()" novalidate>
+              <div class="row mb-3">
+                <div class="col-md-6 pr-1">
+                  <div class="form-group">
+                    <label>Election Name</label>
+                    <input type="text" #election_name="ngModel"
+                           [class.is-invalid]="election_name.invalid && election_name.touched" required
+                           name="election_name" class="form-control input-field" placeholder="Enter election name"
+                           [(ngModel)]="electionModel.election_name">
+                    <small class="text-danger" [class.d-none]="election_name.valid || election_name.untouched">election
+                      name is
+                      required</small>
+                  </div>
+                </div>
+                <div class="col-md-6 pl-1">
+                  <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" #location="ngModel" [class.is-invalid]="location.invalid && location.touched"
+                           required
+                           name="location" class="form-control input-field" placeholder="Enter location name"
+                           [(ngModel)]="electionModel.location">
+                    <small class="text-danger" [class.d-none]="location.valid || location.untouched">location is
+                      required</small>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="col-md-4 pr-1">
+                  <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" #date="ngModel" [class.is-invalid]="date.invalid && date.touched" required
+                           name="date" class="form-control input-field" placeholder="Enter election date"
+                           [(ngModel)]="electionModel.date">
+                    <small class="text-danger" [class.d-none]="date.valid || date.untouched">election date is
+                      required</small>
+                  </div>
+                </div>
+                <div class="col-md-4 px-1">
+                  <div class="form-group">
+                    <label>Start Time</label>
+                    <input type="time" #start_time="ngModel" [class.is-invalid]="start_time.invalid && start_time.touched"
+                           required
+                           name="start_time" class="form-control input-field" placeholder="Enter election date"
+                           [(ngModel)]="electionModel.start_time">
+                    <small class="text-danger" [class.d-none]="start_time.valid || start_time.untouched">election start
+                      time is
+                      required</small>
+                  </div>
+                </div>
+                <div class="col-md-4 pl-1">
+                  <div class="form-group">
+                    <label>End Time</label>
+                    <input type="time" #end_time="ngModel" [class.is-invalid]="end_time.invalid && end_time.touched"
+                           required
+                           name="end_time" class="form-control input-field" placeholder="Enter election date"
+                           [(ngModel)]="electionModel.end_time">
+                    <small class="text-danger" [class.d-none]="end_time.valid || end_time.untouched">election end time is
+                      required</small>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-xl-12 col-md-12 pr-1">
+                  <div class="form-group">
+                    <label>Description</label>
+                    <textarea type="text" #description="ngModel"
+                              [class.is-invalid]="description.invalid && description.touched"
+                              required name="description" class="form-control input-field" placeholder="Enter description"
+                              [(ngModel)]="electionModel.description"></textarea>
+                    <small class="text-danger" [class.d-none]="description.valid || description.untouched">election
+                      description is
+                      required</small>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-xl-12 col-md-12 pr-1">
+                  <input type="file" id="myFile" accept="image/*" (change)="onSelectedFile($event)" class="d-none">
+                  <label for="myFile" class="fs-5 file-import col-xl-12 col-lg-12 col-md-12 btn btn-round">
+                    <i class="bi bi-image"></i> &nbsp;
+                    Insert Election Photo or Banner
+                  </label>
+                </div>
+              </div>
+              <div class="row d-flex align-content-end justify-content-end">
+                <div class="col-xl-5 col-lg-5 col-md-5 mt-2">
+                  <button [disabled]="electionDetails.form.invalid" type="submit"
+                          data-bs-toggle="modal"
+                          data-bs-target="#submit"
+                          class="col-md-7  fs-5 next-btn btn btn-outline-primary btn-round">Submit
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="submit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered ">
+    <div class="modal-content">
+      <div class="row d-flex align-items-center">
+        <h2 class="text-center text-success mt-3">PROCESS COMPLETE</h2>
+      </div>
+      <div class="modal-body success-msg">
+        <ng-lottie
+          [options]="options"
+          (animationCreated)="onAnimate($event)">
+        </ng-lottie>
+      </div>
+      <div class="modal-footer">
+        <div class="row col-md-12 d-flex align-items-center justify-content-center">
+          <button type="submit" data-bs-dismiss="modal"
+                  (click)="partiesPage(newElectionModel.id)" class="col-md-5 text-white btn btn-success btn-round">Next
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

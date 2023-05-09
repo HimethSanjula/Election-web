@@ -1,0 +1,91 @@
+.my-custom-scrollbar {
+  position: relative;
+  height: 500px;
+  overflow: auto;
+}
+.table-wrapper-scroll-y {
+  display: block;
+}
+
+.welcome-sc {
+  background: linear-gradient(120deg, rgba(130, 87, 212, 0.13), rgba(191, 184, 255, 0.41), rgba(255, 255, 255, 1))
+}
+
+.add-btn {
+  height: 50px;
+  background-color: #502a9f;
+  color: white;
+}
+
+.add-btn:hover {
+  background-color: #6f43c9;
+  color: white;
+}
+
+.cancel-btn {
+  border: 2px solid #502a9f;
+  background-color: white;
+  color: #502a9f;
+}
+.cancel-btn:hover {
+  border: 2px solid #502a9f;
+  background-color:#502a9f;
+  color: white;
+}
+
+.success-msg {
+  height: 250px;
+}
+
+.input-field {
+  border-color: #c4a7ff;
+}
+.file-import{
+  height: 50px;
+  background-color: #502a9f;
+  color: white;
+}
+.file-import:hover {
+  background-color: #6f43c9;
+  color: white;
+}
+
+.color-picker{
+  height: 50px;
+  background-color: white;
+  color: #502a9f;
+  border-color: #502a9f;
+}
+
+.color-picker:hover{
+  background-color: #502a9f;
+  color: white;
+}
+
+.add-candi {
+  height: 40px;
+  background-color:#f4bc6d;
+  color: black;
+}
+
+.add-candi:hover {
+  background-color: #e6ab59;
+  color: black;
+}
+
+.remove-btn {
+  height: 40px;
+  background-color: #b10e56;
+  color: white;
+}
+
+.remove-btn:hover {
+  background-color:  #a1074b;
+  color: white;
+}
+.candi-img{
+  background-color: rgba(80, 42, 159, 0.14);
+  height: 140px;
+  width: 160px;
+  border-radius: 10px;
+}

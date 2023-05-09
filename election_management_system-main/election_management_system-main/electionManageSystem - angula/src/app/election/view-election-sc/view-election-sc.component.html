@@ -1,0 +1,574 @@
+<app-side-bar></app-side-bar>
+
+<div class="content">
+
+  <div class="py-4">
+    <div class="d-flex justify-content-between w-100 flex-wrap">
+      <div class="mb-2 mb-lg-0">
+        <h1 class="h4">View Election Details</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-xl-1 mt-1 p-lg-1 p-md-3 d-flex  justify-content-center">
+    <div class="col-xl-12 col-lg-12 col-md-12 card card-nav-tabs welcome-sc">
+      <div class="card-body card-color">
+        <div class="row mb-1">
+          <div class="col-xl-4 col-lg-12 col-md-6 mb-4">
+            <div>
+              <img [src]="electionModel.image_name" class="election-banner">
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-5 col-md-6">
+            <div class="mb-4 bg-gray-100 rounded p-2">
+              <h5 class="text-gray-500">Election Name</h5>
+              <h4 class="text-gray-900">{{electionModel.election_name}}</h4>
+            </div>
+            <div class="mb-4 bg-gray-100 rounded p-2">
+              <h5 class="text-gray-500">Election Location</h5>
+              <h4 class="text-gray-900">{{electionModel.location}}</h4>
+            </div>
+            <div class="mb-4 bg-gray-100 rounded p-2">
+              <h5 class="text-gray-500">Election Date</h5>
+              <h4 class="text-gray-900">{{electionModel.date}}</h4>
+            </div>
+          </div>
+          <div class="col-xl-5 col-lg-7 col-md-12 ">
+            <div class="mb-4 bg-gray-100 rounded p-2">
+              <h5 class="text-gray-500">Election Start Time</h5>
+              <h4 class="text-gray-900">{{electionModel.start_time}}</h4>
+            </div>
+            <div class="mb-4 bg-gray-100 rounded p-2">
+              <h5 class="text-gray-500">Election End Time</h5>
+              <h4 class="text-gray-900">{{electionModel.end_time}}</h4>
+            </div>
+            <div class="mb-4 bg-gray-100 rounded p-2">
+              <h5 class="text-gray-500">Description</h5>
+              <h4 class="text-gray-900">{{electionModel.description}}</h4>
+            </div>
+          </div>
+        </div>
+        <div class="row p-2">
+          <button data-bs-toggle="modal" data-bs-target="#editElection" class="col-xl-2 col-lg-3 col-md-4 btn edit-btn">
+            EDIT
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--edit-election-model-->
+
+  <div class="modal fade" id="editElection" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+       aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+      <div class="modal-content">
+        <div class="row d-flex align-items-center">
+          <h4 class="text-center mt-3">Edid Election Details</h4>
+        </div>
+        <div class="modal-body">
+          <div class="card-body">
+            <form #electionDetails="ngForm" novalidate>
+              <div class="row mb-3">
+                <div class="col-md-12 pr-1 d-flex justify-content-center">
+                  <div class="form-group">
+                    <div class="bg-white rounded">
+                      <div class="election-type p-1 d-flex justify-content-center">
+                        <h5 class="mt-1 text-white">Please Select Votable Type</h5>
+                      </div>
+                      <div class="form-check mt-2 d-flex gap-5 justify-content-center">
+                        <div class="form-check form-switch">
+                          <input class="form-check-input" name="candidate_votable" #candidate_votable="ngModel"
+                                 [(ngModel)]="electionModel.candidate_votable" (change)="selectCandidate($event)"
+                                 type="checkbox" id="flexSwitchCheckDefault">
+                          <label class="form-check-label" for="flexSwitchCheckDefault">Candidate Votable</label>
+                        </div>
+                      </div>
+                    </div>
+                    <label>Election Banner</label>
+                    <div class="election-bannerModel">
+                      <img [src]="electionModel.image_name" class="election-bannerModel">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-6 pr-1">
+                  <div class="form-group">
+                    <label>Election Name</label>
+                    <input type="text" #election_name="ngModel"
+                           [class.is-invalid]="election_name.invalid && election_name.touched" required
+                           name="election_name" class="form-control input-field" placeholder="Enter election name"
+                           [(ngModel)]="electionModel.election_name">
+                    <small class="text-danger" [class.d-none]="election_name.valid || election_name.untouched">election
+                      name is
+                      required</small>
+                  </div>
+                </div>
+                <div class="col-md-6 pl-1">
+                  <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" #location="ngModel" [class.is-invalid]="location.invalid && location.touched"
+                           required
+                           name="location" class="form-control input-field" placeholder="Enter location name"
+                           [(ngModel)]="electionModel.location">
+                    <small class="text-danger" [class.d-none]="location.valid || location.untouched">location is
+                      required</small>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="col-md-4 pr-1">
+                  <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" #date="ngModel" [class.is-invalid]="date.invalid && date.touched" required
+                           name="date" class="form-control input-field" placeholder="Enter election date"
+                           [(ngModel)]="electionModel.date">
+                    <small class="text-danger" [class.d-none]="date.valid || date.untouched">election date is
+                      required</small>
+                  </div>
+                </div>
+                <div class="col-md-4 px-1">
+                  <div class="form-group">
+                    <label>Start Time</label>
+                    <input type="time" #start_time="ngModel"
+                           [class.is-invalid]="start_time.invalid && start_time.touched"
+                           required
+                           name="start_time" class="form-control input-field" placeholder="Enter election date"
+                           [(ngModel)]="electionModel.start_time">
+                    <small class="text-danger" [class.d-none]="start_time.valid || start_time.untouched">election
+                      start
+                      time is
+                      required</small>
+                  </div>
+                </div>
+                <div class="col-md-4 pl-1">
+                  <div class="form-group">
+                    <label>End Time</label>
+                    <input type="time" #end_time="ngModel" [class.is-invalid]="end_time.invalid && end_time.touched"
+                           required
+                           name="end_time" class="form-control input-field" placeholder="Enter election date"
+                           [(ngModel)]="electionModel.end_time">
+                    <small class="text-danger" [class.d-none]="end_time.valid || end_time.untouched">election end time
+                      is
+                      required</small>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-xl-12 col-md-12 pr-1">
+                  <div class="form-group">
+                    <label>Description</label>
+                    <textarea type="text" #description="ngModel"
+                              [class.is-invalid]="description.invalid && description.touched"
+                              required name="description" class="form-control input-field"
+                              placeholder="Enter description"
+                              [(ngModel)]="electionModel.description"></textarea>
+                    <small class="text-danger" [class.d-none]="description.valid || description.untouched">election
+                      description is
+                      required</small>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-xl-12 col-md-12 pr-1">
+                  <input type="file" id="candidatePhoto" accept="image/*" (change)="onSelectedPhoto($event)"
+                         class="d-none">
+                  <label for="candidatePhoto" class="fs-5 file-import col-xl-12 col-lg-12 col-md-12 btn btn-round">
+                    <i class="bi bi-image"></i> &nbsp;
+                    Insert Election Photo or Banner
+                  </label>
+                </div>
+              </div>
+              <hr>
+              <div class="row gap-2 d-flex align-items-center justify-content-center">
+                <button type="submit" data-bs-toggle="modal"
+                        data-bs-dismiss="modal" data-bs-target="#staticBackdrop"
+                        class="fs-5 update-btn col-md-5  btn btn-round" (click)="updateElection(election_id)">Update
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!--edit-party-->
+
+  <div class="py-4">
+    <div class="d-flex justify-content-between w-100 flex-wrap">
+      <div class="mb-2 mb-lg-0">
+        <h1 class="h4">View Parties Details</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-xl-1 mt-1 p-lg-1 p-md-3 d-flex  justify-content-center">
+    <div class="col-xl-12 col-lg-12 col-md-12 card card-nav-tabs welcome-sc">
+      <div class="card-body card-color">
+        <div class="row mb-1">
+          <div class="col-xl-6 col-lg-12 col-md-12 mb-4">
+            <div class="card border-0 shadow mb-4">
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-centered table-nowrap mb-0 rounded">
+                    <thead class="t-header">
+                    <tr>
+                      <th class="border-0 rounded-start">Select</th>
+                      <th class="border-0 ">Id</th>
+                      <th class="border-0">Name</th>
+                      <th class="border-0 rounded-end">Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let getPartyByElection of getPartyElection">
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <button (click)="getParty(getPartyByElection._id)" class="btn select-btn" type="submit">Select
+                          </button>
+                        </div>
+                      </td>
+                      <td>{{getPartyByElection._id}}</td>
+                      <td>{{getPartyByElection.party_name}}</td>
+                      <td>{{getPartyByElection.party_description}}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-12 col-md-12 mb-5">
+            <div class="row gap-1">
+              <div class="col-xl-5 col-lg-5">
+                <label class="text-white">Party Banner</label>
+                <div class="party-banner">
+                  <img [src]="partyModel.party_banner" class="party-banner">
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-3 mt-3">
+                <label class="text-white">Party Icon</label>
+                <div class="party-icon">
+                  <img [src]="partyModel.party_icon" class="party-icon">
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-2 col-md-3 mt-3">
+                <label class="text-white">Party Color</label>
+                <div class="party-icon" [style.background-color]="partyModel.party_color">
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="row gap-2 p-2">
+          <button (click)="editPartyBtn()" data-bs-toggle="modal" data-bs-target="#editParties"
+                  class="col-xl-1 col-lg-3 col-md-3 btn edit-btn">
+            EDIT
+          </button>
+<!--          <button data-bs-toggle="modal" data-bs-target="#addParty" class="col-xl-1 col-lg-3 col-md-3 btn edit-btn">-->
+<!--            ADD-->
+<!--          </button>-->
+        </div>
+
+        <hr class="text-white border">
+
+        <!--candidate-details-->
+
+        <div class="row mb-1">
+          <label class="text-white fs-">Candidates Details</label>
+          <div class="col-xl-6 col-lg-12 col-md-12 mb-4 mt-3">
+            <div class="card border-0 shadow mb-4">
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-centered table-nowrap mb-0 rounded">
+                    <thead class="t-header">
+                    <tr>
+                      <th class="border-0 rounded-start">Select</th>
+                      <th class="border-0 ">Id</th>
+                      <th class="border-0">Name</th>
+                      <th class="border-0 rounded-end">Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let getCandidatesByParty of getCandidatesParty">
+                      <td>
+                        <div class="d-flex align-items-center gap-2">
+                          <button (click)="getCandidate(getCandidatesByParty._id)" class="btn select-btn" type="submit">
+                            Select
+                          </button>
+                        </div>
+                      </td>
+                      <td>{{getCandidatesByParty._id}}</td>
+                      <td>{{getCandidatesByParty.candidate_name}}</td>
+                      <td>{{getCandidatesByParty.candidate_description}}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-12 col-md-12 mb-5">
+            <div class="row gap-1">
+              <div class="col-xl-3 col-lg-3 col-md-3 mt-3">
+                <label class="text-white">Profile Photo</label>
+                <div class="party-icon">
+                  <img [src]="candidateModel.candidate_image" class="party-icon">
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 col-md-3 mt-3">
+                <label class="text-white">Number</label>
+                <h1 class="candidate-number ">{{candidateModel.candidate_number}}</h1>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="row gap-2 p-2">
+          <button data-bs-toggle="modal" data-bs-target="#editCandidate" class="col-xl-1 col-lg-3 col-md-3 btn edit-btn">
+            EDIT
+          </button>
+<!--          <button data-bs-toggle="modal" data-bs-target="#addParty" class="col-xl-1 col-lg-3 col-md-3 btn edit-btn">-->
+<!--            ADD-->
+<!--          </button>-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!--edit-parties-model-->
+
+  <div class="modal fade" id="editParties" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+       aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+      <div class="modal-content">
+        <div class="row d-flex align-items-center">
+          <h4 class="text-center mt-3">Edit Election Details</h4>
+        </div>
+        <div class="modal-body">
+          <div class="card-body">
+            <form #partieDetails="ngForm" (ngSubmit)="updateParty()">
+              <div class="row mb-3">
+                <div class="col-md-12 pr-1">
+                  <div class="form-group">
+                    <label>Party Name</label>
+                    <input type="partie_name" #partie_name="ngModel"
+                           [class.is-invalid]="partie_name.invalid && partie_name.touched" required
+                           name="partie_name" class="form-control input-field" placeholder="Enter partie name"
+                           [(ngModel)]="partyModel.party_name">
+                    <small class="text-danger" [class.d-none]="partie_name.valid || partie_name.untouched">partie
+                      name is
+                      required</small>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="col-md-12 pr-1">
+                  <div class="form-group">
+                    <label>Description</label>
+                    <textarea type="partie_description" #partie_description="ngModel"
+                              [class.is-invalid]="partie_description.invalid && partie_description.touched" required
+                              name="partie_description" class="form-control input-field"
+                              placeholder="Enter partie description"
+                              [(ngModel)]="partyModel.party_description"></textarea>
+                    <small class="text-danger" [class.d-none]="partie_description.valid || partie_description.untouched">partie
+                      description is required</small>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-md-6 pl-1">
+                  <input type="file" id="myFileB" accept="image/*" (change)="onSelectedBanner($event)" class="d-none">
+                  <label for="myFileB" class="fs-6 file-import col-xl-12 col-lg-12 col-md-12 btn btn-round">
+                    <i class="bi bi-image"></i> &nbsp;
+                    Insert Banner
+                  </label>
+                </div>
+                <div class="col-md-6 pl-1">
+                  <input type="file" id="myFileI" accept="image/*" (change)="onSelectedIcon($event)" class="d-none">
+                  <label for="myFileI" class="fs-6 file-import col-xl-12 col-lg-12 col-md-12 btn btn-round">
+                    <i class="bi bi-image"></i> &nbsp;
+                    Insert Icon
+                  </label>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="col-md-12 pl-1">
+                  <input [(colorPicker)]='selectedColor' (colorPickerChange)='onColorChange($event)'
+                         [value]='selectedColor' id="colorPicker" class="d-none">
+                  <label for="colorPicker" class="fs-6 color-picker col-xl-12 col-lg-12 col-md-12 btn btn-round">
+                    <i class="bi bi-palette-fill"></i> &nbsp;
+                    Choose a Partie Color
+                  </label>
+                </div>
+              </div>
+              <br>
+              <hr class="mt-3">
+              <div class="row gap-2 d-flex align-items-center justify-content-center">
+                <button type="submit" data-bs-toggle="modal"
+                        data-bs-dismiss="modal" data-bs-target="#staticBackdrop"
+                        class="fs-5 update-btn col-md-5  btn btn-round" (click)="updateParty()">Update
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--edit-candidate-model-->
+
+  <div class="modal fade" id="editCandidate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+       aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+      <div class="modal-content">
+        <div class="row d-flex align-items-center">
+          <h4 class="text-center mt-3">Edit Candidate Details</h4>
+        </div>
+        <div class="modal-body">
+          <div class="card-body">
+            <form #candidateDetails="ngForm" (ngSubmit)="updateCandidate()" novalidate>
+              <div class="row mb-3">
+                <div class="col-md-12 pr-1">
+                  <div class="form-group">
+                    <label>Select Candidate</label>
+                    <select id="candidate_name" #candidate_name="ngModel"
+                            [class.is-invalid]="candidate_name.invalid && candidate_name.touched" required
+                            name="candidate_name" class="form-control input-field"
+                            [(ngModel)]="candidateModel.candidate_name">
+                      <option value="">Select your Candidate</option>
+                      <option value="0">kalhara</option>
+                      <option value="1">sheron</option>
+                    </select>
+                    <small class="text-danger" [class.d-none]="candidate_name.valid || candidate_name.untouched">candidate
+                      is
+                      required</small>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-5 pr-1">
+                  <div class="form-group">
+                    <label>Candidate Photo</label>
+                    <div class="candi-img">
+                      <img [src]="candidateModel.candidate_image" class="candi-img">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-7">
+                  <div class="col-md-12 mb-4 pr-1">
+                    <div class="form-group">
+                      <label>Candidate Number</label>
+                      <input type="text" #candidate_number="ngModel"
+                             [class.is-invalid]="candidate_number.invalid && candidate_number.touched"
+                             pattern="^\d{2}$" required name="candidate_number" class="form-control input-field"
+                             placeholder="enter candidate number" [(ngModel)]="candidateModel.candidate_number">
+                      <div *ngIf="candidate_number.errors && (candidate_number.invalid && candidate_number.touched)">
+                        <small class="text-danger" *ngIf="candidate_number.errors['required']">candidate number is
+                          required</small>
+                        <small class="text-danger" *ngIf="candidate_number.errors['pattern']">candidate number must be 02
+                          digits
+                          required</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 pl-1">
+                    <input type="file" id="myFileC" accept="image/*" (change)="onSelectedProfile($event)" class="d-none">
+                    <label for="myFileC" class="fs-6 file-import col-xl-12 col-lg-12 col-md-12 btn btn-round">
+                      <i class="bi bi-image"></i> &nbsp;
+                      Add Photo
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-md-12 pr-1">
+                  <div class="form-group">
+                    <label>Description</label>
+                    <textarea type="text" #candidate_description="ngModel"
+                              [class.is-invalid]="candidate_description.invalid && candidate_description.touched"
+                              required
+                              name="candidate_description" class="form-control input-field"
+                              placeholder="Enter description"
+                              [(ngModel)]="candidateModel.candidate_description"></textarea>
+                    <small class="text-danger"
+                           [class.d-none]="candidate_description.valid || candidate_description.untouched">description
+                      name is
+                      required</small>
+                  </div>
+                </div>
+              </div>
+              <hr class="mt-3">
+              <div class="row gap-2 d-flex align-items-center justify-content-center">
+                <button type="submit" data-bs-toggle="modal"
+                        data-bs-dismiss="modal" data-bs-target="#staticBackdrop"
+                        class="fs-5 update-btn col-md-5  btn btn-round" (click)="updateCandidate()">Update
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--  &lt;!&ndash;edit-participate&ndash;&gt;-->
+
+<!--  <div class="py-4">-->
+<!--    <div class="d-flex justify-content-between w-100 flex-wrap">-->
+<!--      <div class="mb-2 mb-lg-0">-->
+<!--        <h1 class="h4">View Participate Details</h1>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+
+<!--  <div class="p-xl-1 mt-1 p-lg-1 p-md-3 d-flex  justify-content-center">-->
+<!--    <div class="col-xl-12 col-lg-12 col-md-12 card card-nav-tabs welcome-sc">-->
+<!--      <div class="card-body card-color">-->
+<!--        <div class="row mb-1">-->
+<!--          <div class="col-xl-6 col-lg-12 col-md-12 mb-4">-->
+<!--            <div class="card border-0 shadow mb-4">-->
+<!--              <div class="card-body">-->
+<!--                <div class="table-responsive">-->
+<!--                  <table class="table table-centered table-nowrap mb-0 rounded">-->
+<!--                    <thead class="t-header">-->
+<!--                    <tr>-->
+<!--                      <th class="border-0 rounded-start">Id</th>-->
+<!--                      <th class="border-0 rounded-end">Name</th>-->
+<!--                    </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody>-->
+<!--                    <tr *ngFor="let userData of userData">-->
+<!--                      <td>{{userData}}</td>-->
+<!--                      <td>Kalhara Dasnayaka</td>-->
+<!--                    </tr>-->
+<!--                    </tbody>-->
+<!--                  </table>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="row gap-2 p-2">-->
+<!--          <button (click)="editPartyBtn()" data-bs-toggle="modal" data-bs-target="#editParties"-->
+<!--                  class="col-xl-1 col-lg-3 col-md-3 btn edit-btn">-->
+<!--            EDIT-->
+<!--          </button>-->
+<!--          <button data-bs-toggle="modal" data-bs-target="#addParty" class="col-xl-1 col-lg-3 col-md-3 btn edit-btn">-->
+<!--            ADD-->
+<!--          </button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

@@ -1,0 +1,49 @@
+.edit-btn {
+  height: 40px;
+  background-color:#f4bc6d;
+  color: black;
+}
+
+.edit-btn:hover {
+  background-color: #e6ab59;
+  color: black;
+}
+
+.update-btn {
+  height: 50px;
+  background-color:#f4bc6d;
+  color: black;
+}
+
+.update-btn:hover {
+  background-color: #e6ab59;
+  color: black;
+}
+
+.remove-btn {
+  height: 40px;
+  background-color: #b10e56;
+  color: white;
+}
+
+.remove-btn:hover {
+  background-color:  #a1074b;
+  color: white;
+}
+
+.t-header{
+  color: white;
+  background: linear-gradient(90deg, rgba(31, 24, 58, 1), rgba(52, 36, 60, 1), rgba(65, 39, 95, 1));
+}
+
+.edit-model{
+  width: 530px;
+}
+
+.edit-box{
+  width: 560px;
+}
+
+.success-msg {
+  height: 100px;
+}

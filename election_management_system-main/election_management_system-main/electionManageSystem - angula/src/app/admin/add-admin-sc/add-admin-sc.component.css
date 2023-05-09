@@ -1,0 +1,38 @@
+
+.welcome-sc {
+  background: linear-gradient(120deg, rgba(130, 87, 212, 0.13), rgba(191, 184, 255, 0.41), rgba(255, 255, 255, 1))
+}
+
+.add-btn {
+  height: 50px;
+  background-color: #502a9f;
+  color: white;
+}
+
+.add-btn:hover {
+  background-color: #6f43c9;
+  color: white;
+}
+
+.cancel-btn {
+  border: 1px solid #502a9f;
+  background-color: white;
+  color: #502a9f;
+}
+.cancel-btn:hover {
+  border: 1px solid #502a9f;
+  background-color:#502a9f;
+  color: white;
+}
+
+.success-msg {
+  height: 250px;
+}
+
+.input-field {
+  border-color: #c4a7ff;
+}
+
+hr{
+  color: #502a9f;
+}

@@ -1,0 +1,288 @@
+<app-side-bar></app-side-bar>
+
+<div class="content">
+  <div class="py-4">
+    <div class="d-flex justify-content-between w-100 flex-wrap">
+      <div class="mb-3 mb-lg-0">
+        <h1 class="h4">Admin Manage</h1>
+      </div>
+    </div>
+  </div>
+  <div class="card border-0 shadow mb-4">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-centered table-nowrap mb-0 rounded">
+          <thead class="t-header">
+          <tr>
+            <th class="border-0 rounded-start">Action</th>
+            <th class="border-0 ">Id</th>
+            <th class="border-0">First Name</th>
+            <th class="border-0">Middle Name</th>
+            <th class="border-0">Last Name</th>
+            <th class="border-0">Birthday</th>
+            <th class="border-0">Email</th>
+            <th class="border-0">Home Address</th>
+            <th class="border-0 rounded-end">Phone Number</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let adminData of adminData">
+            <td class="text-success">
+              <div class="d-flex align-items-center gap-2">
+                <button class="btn edit-btn" type="submit" data-bs-toggle="modal"
+                        (click)="editButton(adminData._id)" data-bs-target="#adminEdit">EDIT
+                </button>
+                <button (click)="removeButton(adminData._id)" class="btn remove-btn" data-bs-toggle="modal" data-bs-target="#remove">Remove</button>
+              </div>
+            </td>
+            <td>{{adminData._id}}</td>
+            <td>{{adminData.first_name}}</td>
+            <td>{{adminData.middle_name}}</td>
+            <td>{{adminData.last_name}}</td>
+            <td>{{adminData.date_of_birth}}</td>
+            <td>{{adminData.email}}</td>
+            <td>{{adminData.home_address}}</td>
+            <td>{{adminData.phone_number}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="adminEdit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+       aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+      <div class="modal-content edit-box">
+        <div class="row d-flex align-items-center">
+          <h2 class="text-center text-success mt-3">EDIT</h2>
+        </div>
+        <div class="modal-body">
+          <div class="edit-model">
+            <div class="col-xl-12 col-lg-12 col-md-12 card card-nav-tabs text-center welcome-sc">
+              <div class="card-body">
+                <form #editadmin="ngForm" novalidate>
+                  <div class="row mb-3">
+                    <div class="col-md-4 pr-1">
+                      <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" #first_name="ngModel"
+                               [class.is-invalid]="first_name.invalid && first_name.touched" required
+                               name="first_name" class="form-control input-field" placeholder="Enter your first name"
+                               [(ngModel)]="adminModel.first_name">
+                        <small class="text-danger" [class.d-none]="first_name.valid || first_name.untouched">first name is
+                          required</small>
+                      </div>
+                    </div>
+                    <div class="col-md-4 pr-1">
+                      <div class="form-group">
+                        <label>Middle Name</label>
+                        <input type="text" #middle_name="ngModel"
+                               [class.is-invalid]="middle_name.invalid && middle_name.touched" required
+                               name="middle_name" class="form-control input-field" placeholder="Enter your middle name"
+                               [(ngModel)]="adminModel.middle_name">
+                        <small class="text-danger" [class.d-none]="middle_name.valid || middle_name.untouched">middle name
+                          is
+                          required</small>
+                      </div>
+                    </div>
+                    <div class="col-md-4 pr-1">
+                      <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" #last_name="ngModel"
+                               [class.is-invalid]="last_name.invalid && last_name.touched" required
+                               name="last_name" class="form-control input-field" placeholder="Enter your Last name"
+                               [(ngModel)]="adminModel.last_name">
+                        <small class="text-danger" [class.d-none]="last_name.valid || last_name.untouched">Last name is
+                          required</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-md-6 pr-1">
+                      <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" #email="ngModel" [class.is-invalid]="email.invalid && email.touched" required
+                               name="email" class="form-control input-field" placeholder="Enter your email"
+                               [(ngModel)]="adminModel.email">
+                        <small class="text-danger" [class.d-none]="email.valid || email.untouched">email is
+                          required</small>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pr-1">
+                      <div class="form-group">
+                        <label>Gender</label>
+                        <select id="gender" #gender="ngModel" [class.is-invalid]="gender.invalid && gender.touched"
+                                required
+                                name="gender" class="form-control input-field" [(ngModel)]="adminModel.gender">
+                          <option value="">Select your gender</option>
+                          <option value="M">Male</option>
+                          <option value="F">Female</option>
+                        </select>
+                        <small class="text-danger" [class.d-none]="gender.valid || gender.untouched">gender is
+                          required</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-md-12 pr-1">
+                      <div class="form-group">
+                        <label>Home Address</label>
+                        <input name="home_address" #home_address="ngModel"
+                               [class.is-invalid]="home_address.invalid && home_address.touched"
+                               required class="form-control input-field" placeholder="Enter your address"
+                               [(ngModel)]="adminModel.home_address">
+                        <small class="text-danger" [class.d-none]="home_address.valid || home_address.untouched">address
+                          is
+                          required</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-md-6 pr-1">
+                      <div class="form-group">
+                        <label>City</label>
+                        <input name="city" #city="ngModel" [class.is-invalid]="city.invalid && city.touched"
+                               required class="form-control input-field" placeholder="Enter your city"
+                               [(ngModel)]="adminModel.city">
+                        <small class="text-danger" [class.d-none]="city.valid || city.untouched">city is
+                          required</small>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pl-1">
+                      <div class="form-group">
+                        <label>Postal Code</label>
+                        <input name="postal_code" #postal_code="ngModel"
+                               [class.is-invalid]="postal_code.invalid && postal_code.touched"
+                               required class="form-control input-field" placeholder="Enter your postal code"
+                               [(ngModel)]="adminModel.postal_code">
+                        <small class="text-danger" [class.d-none]="postal_code.valid || postal_code.untouched">postal code
+                          is
+                          required</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-md-6 pr-1">
+                      <div class="form-group">
+                        <label>Data Of Birth</label>
+                        <input type="date" #date_of_birth="ngModel"
+                               [class.is-invalid]="date_of_birth.invalid && date_of_birth.touched" required
+                               name="date_of_birth"
+                               class="form-control input-field"
+                               placeholder="Enter your birthday" [(ngModel)]="adminModel.date_of_birth">
+                        <small class="text-danger" [class.d-none]="date_of_birth.valid || date_of_birth.untouched">birthday
+                          is
+                          required</small>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-2 pl-1">
+                      <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="text" #phone_number="ngModel"
+                               [class.is-invalid]="phone_number.invalid && phone_number.touched"
+                               pattern="^\d{10}$" required name="phone_number" class="form-control input-field"
+                               placeholder="enter your phone number" [(ngModel)]="adminModel.phone_number">
+                        <div *ngIf="phone_number.errors && (phone_number.invalid && phone_number.touched)">
+                          <small class="text-danger" *ngIf="phone_number.errors['required']">phone number is
+                            required</small>
+                          <small class="text-danger" *ngIf="phone_number.errors['pattern']">phone number must be 10 digits
+                            required</small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row mb-4">
+                    <div class="col-md-6 pr-1">
+                      <div class="form-group">
+                        <label>Password</label>
+                        <input type="text" #password="ngModel" [class.is-invalid]="password.invalid && password.touched"
+                               required name="password" class="form-control input-field"
+                               placeholder="Enter your password" [(ngModel)]="adminModel.password">
+                        <small class="text-danger" [class.d-none]="password.valid || password.untouched">password is
+                          required</small>
+                      </div>
+                    </div>
+                    <div class="col-md-6 pl-1">
+                      <div class="form-group">
+                        <label>Comfirm Password</label>
+                        <input type="text" #repassword="ngModel"
+                               [class.is-invalid]="repassword.invalid && repassword.touched"
+                               required name="repassword" class="form-control input-field"
+                               placeholder="Enter re-type password" ngModel>
+                        <small class="text-danger" *ngIf="password.value !== repassword.value">Passwords do not
+                          match.</small>
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row gap-2 d-flex align-items-center justify-content-center">
+                    <button [disabled]="editadmin.form.invalid" type="submit" data-bs-toggle="modal"
+                            data-bs-dismiss="modal" data-bs-target="#staticBackdrop"
+                            class="fs-5 update-btn col-md-5  btn btn-round" (click)="editAdmin(currentAdminId)">Update
+                    </button>
+                    <button type="submit" data-bs-dismiss="modal"
+                            class="fs-5 update-btn col-md-5 btn btn-round">Cancel
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+       aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+      <div class="modal-content">
+        <div class="row d-flex align-items-center">
+          <h2 class="text-center text-success mt-3">SUCCESS</h2>
+        </div>
+        <div class="modal-body success-msg ">
+          <ng-lottie
+            [options]="options"
+            (animationCreated)="onAnimate($event)">
+          </ng-lottie>
+        </div>
+        <div class="modal-footer">
+          <div class="row col-md-12 d-flex align-items-center justify-content-center">
+            <button type="submit" data-bs-dismiss="modal"
+                    class="col-md-5 text-white btn btn-success btn-round">DONE
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- remove-Modal -->
+  <div class="modal fade" id="remove" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+       aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+      <div class="modal-content">
+        <div class="row d-flex align-items-center">
+          <h2 class="text-danger mt-3">&nbsp; Remove admin?</h2>
+        </div>
+        <div class="modal-body success-msg ">
+          <h4>Are you sure you want to remove this admin?</h4>
+        </div>
+        <div class="modal-footer">
+          <div class="row gap-2 col-md-12 d-flex align-items-end justify-content-end">
+            <button type="submit" data-bs-dismiss="modal"
+                    class="col-md-3 btn btn-outline-gray-800 btn-round">Cancel
+            </button>
+            <button (click)="removeAdmin(currentAdminId)" type="submit" data-bs-dismiss="modal"
+                    class="col-md-3 text-white btn btn-danger btn-round">Remove
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

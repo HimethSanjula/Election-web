@@ -1,0 +1,44 @@
+.welcome-sc{
+  background-color: #E1E1E1;
+}
+.welcome-sc-box{
+  height: 750px;
+}
+.welcome-sc-btn{
+  height: 55px;
+  width: 500px;
+}
+.box-left{
+  height: 520px;
+  background-color: #FD6060;
+  border-radius: 10px;
+}
+.box-right{
+  height: 520px;
+  background-color: white;
+}
+.img-box{
+  height: 300px;
+  background-color: white;
+  border-radius: 10px;
+}
+.title{
+  background-color: whitesmoke;
+  height: 40px;
+  border-radius: 10px;
+}
+.vote-btn{
+  height: 50px;
+  background-color: #FFE300;
+  color: black;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+}
+.vote-btn:hover{
+  background-color: #FFC700;
+}
+.details-box{
+  height: 35px;
+  background-color: #F5F5F5;
+}

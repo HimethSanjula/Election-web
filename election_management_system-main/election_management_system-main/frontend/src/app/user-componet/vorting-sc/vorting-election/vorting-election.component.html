@@ -1,0 +1,30 @@
+<div class="col-xl-12">
+  <div class="header d-flex align-items-center justify-content-center">
+    <h1 class="text-white">VOTING</h1>
+  </div>
+  <div class="date d-flex align-items-center justify-content-center px-4">
+    <h4>Time -{{currentTime}}</h4>
+  </div>
+  <div *ngFor="let electionData of electionData" class="row p-5 d-flex align-items-center justify-content-center">
+    <div class="row election-box col-xl-3 col-lg-4 col-md-6 col-8 d-flex justify-content-center ">
+      <div class="d-flex justify-content-center mt-3 col-md-11 col-11 banner p-2">
+        <img src="{{electionData.image_name}}" class="banner-img">
+      </div>
+      <div class="text-box col-md-11 col-11 d-flex align-items-center justify-content-center">
+        <h5>{{electionData.election_name}}</h5>
+      </div>
+      <div class="text-box col-md-11 col-11 d-flex align-items-center justify-content-center">
+        <h5>Date - {{electionData.date}}</h5>
+      </div>
+      <div class="text-box col-md-11 col-11 d-flex align-items-center justify-content-center">
+        <h5>Start Time - {{electionData.start_time}}</h5>
+      </div>
+      <div class="text-box col-md-11 col-11 d-flex align-items-center justify-content-center">
+        <h5>End Time - {{electionData.end_time}}</h5>
+      </div>
+    </div>
+    <div class="mt-5 d-flex justify-content-center">
+        <button (click)="voteParty(electionData._id)" class="col-xl-3 col-md-6 btn click">NEXT</button>
+    </div>
+  </div>
+</div>

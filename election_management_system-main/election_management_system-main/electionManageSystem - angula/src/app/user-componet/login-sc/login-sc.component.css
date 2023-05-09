@@ -1,0 +1,36 @@
+.welcome-sc{
+  background-color: #E1E1E1;
+}
+.welcome-sc-box{
+  height: 750px;
+
+}
+.welcome-sc-btn{
+  height: 55px;
+  width: 500px;
+
+}
+.box-left{
+  height: 750px;
+  background-color: #FD6060;
+}
+.box-right{
+  height: 750px;
+  background-color: white;
+}
+.box-login{
+  height: 640px;
+  background-color: #FD6060;
+}
+
+.login-btn{
+  height: 50px;
+  background-color: #FD6060;
+  color: white;
+  border-radius: 5px;
+  border: none;
+}
+.login-btn:hover{
+  background-color: #DF4646;
+}
+

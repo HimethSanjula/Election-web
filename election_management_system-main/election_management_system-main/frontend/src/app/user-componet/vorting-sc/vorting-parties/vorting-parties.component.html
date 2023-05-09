@@ -1,0 +1,20 @@
+<div class="col-xl-12">
+  <div class="header d-flex align-items-center justify-content-center">
+    <h1 class="text-white">VOTING - PARTY</h1>
+  </div>
+  <div class="date d-flex align-items-center justify-content-center px-4">
+    <h4>Time -{{currentTime}}</h4>
+  </div>
+  <div class="mt-5 tile-h">
+    <div class="row gap-4 p-md-3 d-flex align-items-center justify-content-center">
+      <div *ngFor="let partyData of getPartyElection" (click)="candidatePage(partyData._id)" class="col-xl-2 col-lg-2 col-md-3 p-2 party-box" >
+        <div class="img-box d-flex justify-content-center">
+          <img src="{{partyData.party_banner}}" width="190px">
+        </div>
+        <div class="title p-1 mt-3 d-flex justify-content-center">
+          <h4>{{partyData.party_name}}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

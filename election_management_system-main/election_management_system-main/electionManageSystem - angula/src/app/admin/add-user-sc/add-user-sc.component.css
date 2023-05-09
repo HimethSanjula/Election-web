@@ -1,0 +1,74 @@
+
+.welcome-sc {
+  background: linear-gradient(120deg, rgba(130, 87, 212, 0.13), rgba(191, 184, 255, 0.41), rgba(255, 255, 255, 1))
+}
+
+.add-btn {
+  height: 50px;
+  background-color: #502a9f;
+  color: white;
+}
+
+.add-btn:hover {
+  background-color: #6f43c9;
+  color: white;
+}
+
+.cancel-btn {
+  border: 2px solid #502a9f;
+  background-color: white;
+  color: #502a9f;
+}
+.cancel-btn:hover {
+  border: 2px solid #502a9f;
+  background-color:#502a9f;
+  color: white;
+}
+
+.success-msg {
+  height: 250px;
+}
+
+.input-field {
+  border-color: #c4a7ff;
+}
+
+.next-btn {
+  height: 50px;
+  color: #DF4646;
+  background-color: black;
+}
+
+.next-btn:hover {
+  background-color: rgba(0, 0, 0, 0.89);
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 255, .2);
+  transition: 0.1s;
+}
+
+.finger-box{
+  height: 280px;
+  background-color: #F4F4F4;
+  border-radius: 5px;
+}
+
+.success-msg{
+  height: 250px;
+}
+
+#progress-bar {
+  width: 100%;
+  height: 20px;
+  background-color: #ddd;
+}
+
+#progress-bar-fill {
+  height: 100%;
+  background-color: #4CAF50;
+  width: 100%;
+  transition: width 15s linear;
+}
+
+.time-re{
+  color:#502a9f;
+  font-weight: bold;
+}

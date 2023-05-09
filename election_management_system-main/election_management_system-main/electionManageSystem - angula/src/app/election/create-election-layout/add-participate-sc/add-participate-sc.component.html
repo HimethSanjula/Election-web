@@ -1,0 +1,63 @@
+<app-side-bar></app-side-bar>
+
+<div class="content">
+  <div class="py-4">
+    <div class="d-flex justify-content-between w-100 flex-wrap">
+      <div class="mb-3 mb-lg-0">
+        <h1 class="h4">Create New Election</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-xl-3 mt-3 p-lg-1 p-md-3 d-flex  justify-content-center">
+    <div class="col-xl-10 col-lg-10 col-md-11 card card-nav-tabs text-center welcome-sc-box">
+      <div class="card-body">
+        <div class="card-header">
+          <div class="row mb-4">
+            <div class="gap-4 col-xl-6 col-lg-6 col-md-6  d-flex align-items-start">
+              <button (click)="selectAll()" class="fs-6 next-btn col-xl-3 col-lg-5 col-md-5 btn btn-outline-primary btn-round">Select All
+              </button>
+              <button (click)="unselectAll()" class="fs-6 next-btn col-xl-3 col-lg-5 col-md-5 btn btn-outline-primary btn-round">UnSelect All
+              </button>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 d-flex align-content-end justify-content-end ">
+              <button (click)="finish()" type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                      class="fs-6 next-btn  col-xl-3 col-lg-5 col-md-5 btn btn-outline-primary btn-round">Next
+              </button>
+            </div>
+          </div>
+          <h4 class="card-title mt-1">Add Participate</h4>
+        </div>
+        <div class="mt-1 h-50">
+          <div class="card-body">
+            <div class="table-responsive table-wrapper-scroll-y my-custom-scrollbar">
+              <table class="table table-centered table-nowrap mb-0 rounded">
+                <thead class="thead-light">
+                <tr>
+                  <th class="border-0 rounded-start">Id</th>
+                  <th class="border-0">User Name</th>
+                  <th class="border-0 rounded-end">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let userData of userData">
+                  <td>{{userData._id}}</td>
+                  <td>{{userData.first_name}}</td>
+                  <td class="text-success">
+                    <div class="d-flex align-items-center gap-2">
+                      <div class="form-check"><input [(ngModel)]="userData.isChecked" (click)="selectUser(userData._id)" (change)="onCheckboxChange($event)" class="form-check-input" id="checkbox" type="checkbox">
+                        <label class="form-check-label" for="checkbox">Add</label></div>
+                    </div>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

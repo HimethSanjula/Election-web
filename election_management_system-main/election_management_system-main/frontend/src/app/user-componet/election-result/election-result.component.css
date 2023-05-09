@@ -1,0 +1,146 @@
+.header {
+  background-color: #16062f;
+  height: 65px;
+}
+
+.date {
+  background-color: rgba(101, 94, 224, 0.15);
+  height: 50px;
+  color: #655ee0;
+  box-shadow: 0px 3px 8px 3px rgba(0, 0, 255, .2);
+}
+
+.second-place {
+  background-color: #655ee0;
+  height: 450px;
+  border-radius: 10px;
+}
+
+.first-place {
+  background-color: #655ee0;
+  height: 500px;
+  border-radius: 10px;
+  box-shadow: 0px 3px 8px 3px rgba(0, 0, 255, .5);
+
+}
+.img{
+  height: 250px;
+  background-color: white;
+  border-radius: 7px;
+}
+
+.vote-count{
+  color: #ffd500;
+  font-weight: bold;
+}
+
+
+.welcome-sc-btn {
+  height: 55px;
+  width: 500px;
+}
+
+.title {
+  background-color: whitesmoke;
+  height: 40px;
+  border-radius: 10px;
+}
+
+.tile-h {
+  height: 550px;
+}
+
+.edit-btn {
+  height: 40px;
+  background-color:#f4bc6d;
+  color: black;
+}
+
+.edit-btn:hover {
+  background-color: #e6ab59;
+  color: black;
+}
+
+.update-btn {
+  height: 50px;
+  background-color:#f4bc6d;
+  color: black;
+}
+
+.update-btn:hover {
+  background-color: #e6ab59;
+  color: black;
+}
+
+.remove-btn {
+  height: 40px;
+  background-color: #b10e56;
+  color: white;
+}
+
+.remove-btn:hover {
+  background-color:  #a1074b;
+  color: white;
+}
+
+.t-header {
+  color: white;
+  background: linear-gradient(90deg, rgba(31, 24, 58, 1), rgba(52, 36, 60, 1), rgba(65, 39, 95, 1));
+}
+
+.edit-model {
+  width: 480px;
+  height: 100px;
+}
+
+.edit-box {
+  width: 520px;
+}
+
+.btn-heigth {
+  height: 100px;
+  font-size: 20px;
+  background-color: rgba(31, 24, 58, 1);
+  color: white;
+
+}
+
+.btn-heigth:hover {
+  border-radius: 20px;
+  transform: scale(1.1);
+  font-size: 20px;
+  transition: 0.2s;
+  background: linear-gradient(90deg, rgba(31, 24, 58, 1), rgba(52, 36, 60, 1), rgba(65, 39, 95, 1));
+}
+
+.election-body {
+  height: 660px;
+}
+
+.file-import{
+  height: 50px;
+  background-color: #502a9f;
+  color: white;
+}
+.file-import:hover {
+  background-color: #6f43c9;
+  color: white;
+}
+
+.election-banner{
+  background-color: rgba(80, 42, 159, 0.14);
+  height: 150px;
+  border-radius: 10px;
+}
+
+.start-btn{
+  height: 40px;
+  background-color: #044d20;
+  color: white;
+}
+
+.start-btn:hover{
+  height: 40px;
+  background-color: #02411a;
+  color: white;
+}

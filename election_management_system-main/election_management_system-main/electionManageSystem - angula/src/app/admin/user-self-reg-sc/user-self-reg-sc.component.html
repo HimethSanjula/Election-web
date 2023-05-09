@@ -1,0 +1,92 @@
+<app-side-bar></app-side-bar>
+
+<div class="content">
+  <div class="py-4">
+    <div class="d-flex justify-content-between w-100 flex-wrap">
+      <div class="mb-3 mb-lg-0">
+        <h1 class="h4">None Active Users</h1>
+      </div>
+    </div>
+  </div>
+  <div class="card border-0 shadow mb-4">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-centered table-nowrap mb-0 rounded">
+          <thead class="thead-light">
+          <tr>
+            <th class="border-0 rounded-start">Id</th>
+            <th class="border-0 ">Name</th>
+            <th class="border-0">Request</th>
+            <th class="border-0 rounded-end">Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let userData of userData">
+            <td>{{userData._id}}</td>
+            <td>{{userData.first_name}}</td>
+            <td>user registraion request</td>
+            <td class="text-success">
+              <div class="d-flex align-items-center gap-2">
+                <button (click)="acceptBtn(userData._id)" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#activate" class="btn btn-danger">Accept</button>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- remove-Modal -->
+  <div class="modal fade" id="activate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+       aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+      <div class="modal-content">
+        <div class="row d-flex align-items-center">
+          <h2 class="text-danger mt-3">&nbsp; Activate user?</h2>
+        </div>
+        <div class="modal-body">
+          <h4>Are you sure you want to activate this user?</h4>
+        </div>
+        <div class="modal-footer">
+          <div class="row gap-2 col-md-12 d-flex align-items-end justify-content-end">
+            <button (click)="userActivate(currentUserId)" type="submit" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#succuss"
+                    class="col-md-3 btn btn-outline-gray-800 btn-round">YES
+            </button>
+            <button  type="submit" data-bs-dismiss="modal"
+                     class="col-md-3 text-white btn btn-danger btn-round">NO
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- success-Modal -->
+  <div class="modal fade" id="succuss" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+       aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+      <div class="modal-content">
+        <div class="row d-flex align-items-center">
+          <h2 class="text-center text-success mt-3">SUCCESS</h2>
+        </div>
+        <div class="modal-body success-msg">
+          <ng-lottie
+            [options]="options"
+            (animationCreated)="onAnimate($event)">
+          </ng-lottie>
+        </div>
+        <div class="modal-footer">
+          <div class="row col-md-12 d-flex align-items-center justify-content-center">
+            <button type="submit" data-bs-dismiss="modal"
+                    class="col-md-5 text-white btn btn-success btn-round">DONE
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

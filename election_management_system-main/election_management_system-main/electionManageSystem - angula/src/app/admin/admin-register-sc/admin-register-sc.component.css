@@ -1,0 +1,13 @@
+.welcome-sc{
+  background-color: #E1E1E1;
+}
+.welcome-sc-box{
+  height: 750px;
+}
+.next-btn{
+  height: 50px;
+  width: 500px;
+}
+.success-msg{
+  height: 250px;
+}

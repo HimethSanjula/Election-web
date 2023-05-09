@@ -1,0 +1,37 @@
+.header{
+  background-color: #16062f;
+  height: 65px;
+}
+.date{
+  background-color: rgba(101, 94, 224, 0.15);
+  height: 50px;
+  color: #655ee0;
+  box-shadow: 0px 3px 8px 3px rgba(0, 0, 255, .2);
+}
+.election-box{
+  background-color: #655ee0;
+  height: 470px;
+  border-radius: 10px;
+}
+.banner{
+  background-color: white;
+  height: 200px;
+  border-radius: 8px;
+}
+.banner-img{
+  height: 185px;
+}
+.text-box{
+  background-color: #343477;
+  border-radius: 8px;
+  color: white;
+  height: 40px;
+}
+.click{
+  border-color: #1c093a;
+  font-size: 25px;
+}
+.click:hover{
+  background-color: #1c093a;
+  color: #655ee0;
+}

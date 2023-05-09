@@ -1,0 +1,186 @@
+<div class="col mx-5">
+  <div class="col-xl-12 mb-4 d-flex align-items-center justify-content-center col-lg-12 col-md-12">
+
+    <div class="col-xl-12">
+
+      <div class="py-4">
+        <div class="d-flex justify-content-between w-100 flex-wrap">
+          <div class="mb-2 mb-lg-0">
+            <h1 class="h4 mx-4">View Election Details</h1>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body card-color">
+        <div class="row gap-2">
+          <div class="col-xl-4 col-lg-6 col-md-6 bg-white election-banner mb-4">
+            <div class="col-xl-12 col-lg-6 col-md-5">
+<!--              <img [src]="electionModel.image_name">-->
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-5 col-md-5">
+            <div class="mb-4 bg-white rounded p-2">
+              <h5 class="text-secondary">Election Name</h5>
+              <h4 class="text-gray-900">{{electionModel.election_name}}</h4>
+            </div>
+            <div class="mb-4 bg-white rounded p-2">
+              <h5 class="text-secondary">Election Location</h5>
+              <h4 class="text-gray-900">{{electionModel.location}}</h4>
+            </div>
+            <div class="mb-4 bg-white rounded p-2">
+              <h5 class="text-secondary">Election Date</h5>
+              <h4 class="text-gray-900">{{electionModel.date}}</h4>
+            </div>
+          </div>
+          <div class="col-xl-4 col-lg-12">
+            <div class="mb-4 bg-white rounded p-2">
+              <h5 class="text-secondary">Election Start Time</h5>
+              <h4 class="text-gray-900">{{electionModel.start_time}}</h4>
+            </div>
+            <div class="mb-4 bg-white rounded p-2">
+              <h5 class="text-secondary">Election End Time</h5>
+              <h4 class="text-gray-900">{{electionModel.end_time}}</h4>
+            </div>
+            <div class="mb-4 bg-white rounded p-2">
+              <h5 class="text-secondary">Description</h5>
+              <h4 class="text-gray-900">{{electionModel.description}}</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!--edit-party-->
+  <div class="mb-5 mt-2 col-xl-12 d-flex align-items-center justify-content-center col-lg-12 col-md-12">
+
+    <div class="col-xl-12">
+
+      <div class="col-xl-12">
+        <div class="py-4">
+          <div class="d-flex justify-content-between w-100 flex-wrap">
+            <div class="mb-2 mb-lg-0">
+              <h1 class="h4 mx-4">View Parties Details</h1>
+            </div>
+          </div>
+        </div>
+        <div class="card-body card-color">
+          <div class="row mb-1">
+            <div class="col-xl-6 col-lg-12 col-md-12 mb-4">
+              <div class="card border-0 shadow mb-4">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-centered table-nowrap mb-0 rounded">
+                      <thead class="t-header">
+                      <tr>
+                        <th class="border-0 rounded-start">Select</th>
+                        <th class="border-0 ">Id</th>
+                        <th class="border-0">Name</th>
+                        <th class="border-0 rounded-end">Description</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr *ngFor="let getPartyByElection of getPartyElection">
+                        <td>
+                          <div class="d-flex align-items-center gap-2">
+                            <button (click)="getParty(getPartyByElection._id)" class="btn select-btn" type="submit">
+                              Select
+                            </button>
+                          </div>
+                        </td>
+                        <td>{{getPartyByElection._id}}</td>
+                        <td>{{getPartyByElection.party_name}}</td>
+                        <td>{{getPartyByElection.party_description}}</td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-12 col-md-12 mb-5">
+              <div class="row gap-1">
+                <div class="col-xl-5 col-lg-5">
+                  <label class="text-white">Party Banner</label>
+                  <div class="party-banner">
+                    <img [src]="partyModel.party_banner" class="party-banner">
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-3 mt-3">
+                  <label class="text-white">Party Icon</label>
+                  <div class="party-icon">
+                    <img [src]="partyModel.party_icon" class="party-icon">
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-2 col-md-3 mt-3">
+                  <label class="text-white">Party Color</label>
+                  <div class="party-icon" [style.background-color]="partyModel.party_color">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <hr class="text-white border">
+
+          <!--candidate-details-->
+
+          <div class="row mb-1">
+            <label class="text-white fs-">Candidates Details</label>
+            <div class="col-xl-6 col-lg-12 col-md-12 mb-4 mt-3">
+              <div class="card border-0 shadow mb-4">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-centered table-nowrap mb-0 rounded">
+                      <thead class="t-header">
+                      <tr>
+                        <th class="border-0 rounded-start">Select</th>
+                        <th class="border-0 ">Id</th>
+                        <th class="border-0">Name</th>
+                        <th class="border-0 rounded-end">Description</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr *ngFor="let getCandidatesByParty of getCandidatesParty">
+                        <td>
+                          <div class="d-flex align-items-center gap-2">
+                            <button (click)="getCandidate(getCandidatesByParty._id)" class="btn select-btn"
+                                    type="submit">
+                              Select
+                            </button>
+                          </div>
+                        </td>
+                        <td>{{getCandidatesByParty._id}}</td>
+                        <td>{{getCandidatesByParty.candidate_name}}</td>
+                        <td>{{getCandidatesByParty.candidate_description}}</td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-12 col-md-12 mb-5">
+              <div class="row gap-1">
+                <div class="col-xl-3 col-lg-3 col-md-3 mt-3">
+                  <label class="text-white">Profile Photo</label>
+                  <div class="party-icon">
+                    <img [src]="candidateModel.candidate_image" class="party-icon">
+                  </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-3 mt-3">
+                  <label class="text-white">Number</label>
+                  <h1 class="candidate-number ">{{candidateModel.candidate_number}}</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+.welcome-sc{
+  background-color: #E1E1E1;
+}
+.welcome-sc-box{
+  height: 750px;
+}
+.welcome-sc-btn{
+  height: 55px;
+  width: 500px;
+}
+.election-box{
+  height: 200px;
+  background-color: #FD6060;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.img-box{
+  background-color: whitesmoke;
+  height: 120px;
+  border-radius: 10px;
+}
+.title{
+  background-color: whitesmoke;
+  height: 40px;
+  border-radius: 10px;
+}
+.tile-h{
+  height: 550px;
+}

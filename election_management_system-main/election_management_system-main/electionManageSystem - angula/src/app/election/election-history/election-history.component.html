@@ -1,0 +1,100 @@
+<app-side-bar></app-side-bar>
+
+<div class="content">
+  <div class="py-4">
+    <div class="d-flex justify-content-between w-100 flex-wrap">
+      <div class="mb-3 mb-lg-0">
+        <h1 class="h4">Election Results</h1>
+      </div>
+    </div>
+  </div>
+  <div class="card border-0 shadow mb-4">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-centered table-nowrap mb-0 rounded">
+          <thead class="t-header">
+          <tr>
+            <th class="border-0 rounded-start">Action</th>
+            <th class="border-0">Id</th>
+            <th class="border-0">Name</th>
+            <th class="border-0">Location</th>
+            <th class="border-0">Date</th>
+            <th class="border-0">Start Time</th>
+            <th class="border-0 rounded-end">End Time</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let electionData of electionData">
+            <td class="text-success">
+              <div class="d-flex align-items-center gap-2">
+                <button  class="btn start-btn" data-bs-toggle="modal"
+                         (click)="partyHistory(electionData._id)"  data-bs-target="#start">SELECT
+                </button>
+              </div>
+            </td>
+            <td>{{electionData._id}}</td>
+            <td>{{electionData.election_name}}</td>
+            <td>{{electionData.location}}</td>
+            <td>{{electionData.date}}</td>
+            <td>{{electionData.start_time}}</td>
+            <td>{{electionData.end_time}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- success-Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+       aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+      <div class="modal-content">
+        <div class="row d-flex align-items-center">
+          <h2 class="text-center text-success mt-3">SUCCESS</h2>
+        </div>
+        <div class="modal-body success-msg ">
+
+        </div>
+        <div class="modal-footer">
+          <div class="row col-md-12 d-flex align-items-center justify-content-center">
+            <button type="submit" data-bs-dismiss="modal"
+                    class="col-md-5 text-white btn btn-success btn-round">DONE
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- remove-Modal -->
+  <div class="modal fade" id="remove" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+       aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+      <div class="modal-content">
+        <div class="row d-flex align-items-center">
+          <h2 class="text-danger mt-3">&nbsp; Remove user?</h2>
+        </div>
+        <div class="modal-body success-msg ">
+          <h4>Are you sure you want to remove this user?</h4>
+        </div>
+        <div class="modal-footer">
+          <div class="row gap-2 col-md-12 d-flex align-items-end justify-content-end">
+            <button type="submit" data-bs-dismiss="modal"
+                    class="col-md-3 btn btn-outline-gray-800 btn-round">Cancel
+            </button>
+            <button  type="submit" data-bs-dismiss="modal"
+                     class="col-md-3 text-white btn btn-danger btn-round">Remove
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>

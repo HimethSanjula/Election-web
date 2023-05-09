@@ -1,0 +1,127 @@
+.header {
+  background-color: #16062f;
+  height: 65px;
+}
+
+.date {
+  background-color: rgba(101, 94, 224, 0.15);
+  height: 50px;
+  color: #655ee0;
+  box-shadow: 0px 3px 8px 3px rgba(0, 0, 255, .2);
+}
+
+.banner {
+  background-color: white;
+  height: 200px;
+  border-radius: 8px;
+}
+
+.text-box {
+  background-color: #343477;
+  border-radius: 8px;
+  color: white;
+  height: 40px;
+}
+
+.click {
+  border-color: #1c093a;
+  font-size: 25px;
+}
+
+.click:hover {
+  background-color: #1c093a;
+  color: #655ee0;
+}
+
+.party-box {
+  background-color: #655ee0;
+  height: 250px;
+  width: 250px;
+  border-radius: 160px;
+  cursor: pointer;
+}
+
+.party-box:hover {
+  background-color: #655ee0;
+  height: 250px;
+  width: 250px;
+  border-radius: 160px;
+  transform: scale(1.1);
+  transition: 0.2s;
+  box-shadow: 0px 3px 8px 3px rgba(0, 0, 255, .2);
+}
+
+.img-box {
+  background-color: whitesmoke;
+  height: 230px;
+  width: 230px;
+  border-radius: 160px;
+}
+
+.img {
+  border-radius: 150px;
+}
+
+.title {
+  background-color: #1b184b;
+  height: 40px;
+  color: whitesmoke;
+  border-radius: 5px;
+}
+
+.partie-details {
+  background-color: #d5e1ff;
+  height: 370px;
+  border-radius: 15px;
+  box-shadow: 0px 2px 30px 2px rgba(186, 214, 255, 0.76);
+}
+
+.partie-head {
+  background-color: #1b184b;
+}
+
+.partyIcon {
+  height: 100px;
+  width: 100px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.partyBanner {
+  height: 120px;
+  width: 270px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.text-color {
+  font-size: 20px;
+  color: #3f37a2;
+  font-weight: normal;
+}
+
+.vote-btn {
+  height: 50px;
+  background-color: #1c093a;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  border-color: #1c093a;
+  border-width: 1px;
+  box-shadow: 0px 2px 8px 2px rgb(160, 124, 232);
+}
+
+.vote-btn:hover {
+  background-color: #FFC700;
+  color: #1c093a;
+  transition: 0.2s;
+}
+
+.close{
+  cursor: pointer;
+}
+
+.user-detail-box{
+  background-color: #dfddff;
+  border-radius: 10px;
+}

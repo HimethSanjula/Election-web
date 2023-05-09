@@ -1,0 +1,266 @@
+<app-side-bar></app-side-bar>
+
+<div class="content">
+  <div class="py-4">
+    <div class="d-flex justify-content-between w-100 flex-wrap">
+      <div class="mb-lg-0">
+        <h1 class="h4">Create New Election</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-xl-3 mt-3 p-lg-1 p-md-3 d-flex  justify-content-center">
+    <div class="col-xl-10 col-lg-10 col-md-11 card card-nav-tabs text-center welcome-sc-box">
+      <div class="card-body">
+        <div class="card-header">
+          <div class="row ">
+            <div class="col-xl-6 col-lg-6 col-md-6  d-flex align-items-start">
+              <button type="submit" data-bs-toggle="modal" data-bs-target="#addnew"
+                      class="fs-6 next-btn col-xl-3 col-lg-5 col-md-5 btn btn-outline-primary btn-round">Add New
+              </button>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 d-flex align-content-end justify-content-end ">
+              <button (click)="participatePage(election_id)" type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                      class="fs-6 next-btn  col-xl-3 col-lg-5 col-md-5 btn btn-outline-primary btn-round">Next
+              </button>
+            </div>
+          </div>
+          <h4 class="card-title mt-1">Add Parties</h4>
+        </div>
+        <div class="mt-1 h-50">
+          <div class="card-body">
+            <div class="table-responsive table-wrapper-scroll-y my-custom-scrollbar">
+              <table class="table table-centered table-nowrap mb-0 rounded">
+                <thead class="thead-light">
+                <tr>
+                  <th class="border-0 rounded-start">#</th>
+                  <th class="border-0">Sample</th>
+                  <th class="border-0 rounded-end">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let getPartyElection of getPartyElection">
+                  <td>{{getPartyElection._id}}</td>
+                  <td>{{getPartyElection.party_name}}</td>
+                  <td class="text-success">
+                    <div class="d-flex align-items-center gap-2">
+                      <button (click)="getPartyId(getPartyElection._id)" data-bs-toggle="modal" data-bs-target="#candidate" class="btn add-candi">Add Candidate
+                      </button>
+                      <button class="btn remove-btn">Remove</button>
+                    </div>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--partie-details-model-->
+
+  <div class="modal fade" id="addnew" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+       aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+      <div class="modal-content">
+        <div class="row d-flex align-items-center">
+          <h4 class="text-center mt-3">Add Parties Details</h4>
+        </div>
+        <div class="modal-body">
+          <div class="card-body">
+            <form #partieDetails="ngForm" (ngSubmit)="addPartie()">
+              <div class="row mb-3">
+                <div class="col-md-12 pr-1">
+                  <div class="form-group">
+                    <label>Partie Name</label>
+                    <input type="partie_name" #partie_name="ngModel"
+                           [class.is-invalid]="partie_name.invalid && partie_name.touched" required
+                           name="partie_name" class="form-control input-field" placeholder="Enter partie name"
+                           [(ngModel)]="partieModel.party_name">
+                    <small class="text-danger" [class.d-none]="partie_name.valid || partie_name.untouched">partie
+                      name is
+                      required</small>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="col-md-12 pr-1">
+                  <div class="form-group">
+                    <label>Description</label>
+                    <textarea type="partie_description" #partie_description="ngModel"
+                              [class.is-invalid]="partie_description.invalid && partie_description.touched" required
+                              name="partie_description" class="form-control input-field"
+                              placeholder="Enter partie description"
+                              [(ngModel)]="partieModel.party_description"></textarea>
+                    <small class="text-danger" [class.d-none]="partie_description.valid || partie_description.untouched">partie
+                      description is required</small>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-md-6 pl-1">
+                  <input type="file" id="myFileB" accept="image/*" (change)="onSelectedBanner($event)" class="d-none">
+                  <label for="myFileB" class="fs-6 file-import col-xl-12 col-lg-12 col-md-12 btn btn-round">
+                    <i class="bi bi-image"></i> &nbsp;
+                    Insert Banner
+                  </label>
+                </div>
+                <div class="col-md-6 pl-1">
+                  <input type="file" id="myFileI" accept="image/*" (change)="onSelectedIcon($event)" class="d-none">
+                  <label for="myFileI" class="fs-6 file-import col-xl-12 col-lg-12 col-md-12 btn btn-round">
+                    <i class="bi bi-image"></i> &nbsp;
+                    Insert Icon
+                  </label>
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-md-12 pl-1">
+                  <input [(colorPicker)]='selectedColor' (colorPickerChange)='onColorChange($event)' [value]='selectedColor'  id="colorPicker" class="d-none">
+                  <label for="colorPicker"  class="fs-6 color-picker col-xl-12 col-lg-12 col-md-12 btn btn-round">
+                    <i class="bi bi-palette-fill"></i> &nbsp;
+                    Choose a Partie Color
+                  </label>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="row col-md-12 d-flex align-items-center justify-content-center">
+            <button type="submit" [disabled]="partieDetails.form.invalid" data-bs-dismiss="modal"
+                    data-bs-target="#partieadd"
+                    (click)="addPartie();" class="col-md-5 text-white btn btn-success btn-round">ADD
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--candidate-details-model-->
+
+  <div class="modal fade" id="candidate" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+       aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+      <div class="modal-content">
+        <div class="row d-flex align-items-center">
+          <h4 class="text-center mt-3">Add Candidates</h4>
+        </div>
+        <div class="modal-body">
+          <div class="card-body">
+            <form #candidateDetails="ngForm" (ngSubmit)="addCandidate()" novalidate>
+              <div class="row mb-3">
+                <div class="col-md-12 pr-1">
+                  <div class="form-group">
+                    <label>Select Candidate</label>
+                    <select id="candidate_name" #candidate_name="ngModel"
+                            [class.is-invalid]="candidate_name.invalid && candidate_name.touched" required
+                            name="candidate_name" class="form-control input-field"
+                            [(ngModel)]="candidateModel.candidate_name">
+                      <option value="">Select your Candidate</option>
+                      <option *ngFor="let userData of userData" [value]="userData.first_name">{{userData.first_name}}</option>
+                    </select>
+                    <small class="text-danger" [class.d-none]="candidate_name.valid || candidate_name.untouched">candidate
+                      is
+                      required</small>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-md-5 pr-1">
+                  <div class="form-group">
+                    <label>Candidate Photo</label>
+                    <div class="candi-img">
+                      <img [src]="imageUrl" *ngIf="imageUrl" class="candi-img">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-7">
+                  <div class="col-md-12 mb-4 pr-1">
+                    <div class="form-group">
+                      <label>Candidate Number</label>
+                      <input type="text" #candidate_number="ngModel"
+                             [class.is-invalid]="candidate_number.invalid && candidate_number.touched"
+                             pattern="^\d{2}$" required name="candidate_number" class="form-control input-field"
+                             placeholder="enter candidate number" [(ngModel)]="candidateModel.candidate_number">
+                      <div *ngIf="candidate_number.errors && (candidate_number.invalid && candidate_number.touched)">
+                        <small class="text-danger" *ngIf="candidate_number.errors['required']">candidate number is
+                          required</small>
+                        <small class="text-danger" *ngIf="candidate_number.errors['pattern']">candidate number must be 02
+                          digits
+                          required</small>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 pl-1">
+                    <input type="file" id="myFileC" accept="image/*" (change)="onSelectedPhoto($event)" class="d-none">
+                    <label for="myFileC" class="fs-6 file-import col-xl-12 col-lg-12 col-md-12 btn btn-round">
+                      <i class="bi bi-image"></i> &nbsp;
+                      Add Photo
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-2">
+                <div class="col-md-12 pr-1">
+                  <div class="form-group">
+                    <label>Description</label>
+                    <textarea type="text" #candidate_description="ngModel"
+                              [class.is-invalid]="candidate_description.invalid && candidate_description.touched"
+                              required
+                              name="candidate_description" class="form-control input-field"
+                              placeholder="Enter description"
+                              [(ngModel)]="candidateModel.candidate_description"></textarea>
+                    <small class="text-danger"
+                           [class.d-none]="candidate_description.valid || candidate_description.untouched">description
+                      name is
+                      required</small>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="row col-md-12 d-flex align-items-center justify-content-center">
+            <button [disabled]="candidateDetails.form.invalid" type="submit" data-bs-dismiss="modal"
+                    (click)="addCandidate()" data-bs-target="#partieadd"
+                    class="col-md-5 text-white btn btn-success btn-round">ADD
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="partieadd" data-bs-backdrop="static1" data-bs-keyboard="false" tabindex="-1"
+       aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered ">
+      <div class="modal-content">
+        <div class="row d-flex align-items-center">
+          <h2 class="text-center text-success mt-3">PROCESS COMPLETE</h2>
+        </div>
+        <div class="modal-body success-msg">
+          <ng-lottie
+            [options]="options"
+            (animationCreated)="onAnimate($event)">
+          </ng-lottie>
+        </div>
+        <div class="modal-footer">
+          <div class="row col-md-12 d-flex align-items-center justify-content-center">
+            <button data-bs-dismiss="modal"
+                    class="col-md-5 text-white btn btn-success btn-round">Done
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

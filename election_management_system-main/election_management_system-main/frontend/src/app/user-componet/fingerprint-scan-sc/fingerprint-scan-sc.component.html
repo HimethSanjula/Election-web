@@ -1,0 +1,60 @@
+<div class="min-vh-100 p-xl-5 p-lg-5 p-md-5 d-flex align-items-center justify-content-center welcome-sc">
+  <div class="col-xl-10 col-lg-10 col-md-10 card card-nav-tabs text-center welcome-sc-box">
+    <div class="card-body">
+      <div class="card-header">
+        <h1 class="card-title mt-3">SCAN</h1>
+        <h4 class="text-black-50 card-text mb-3">Please scan your Fingerprint</h4>
+      </div>
+      <div class="row h-75
+       col-xl-12 mt-3 d-flex align-items-center justify-content-center">
+        <div class="col-xl-3 col-lg-4 col-md-7 finger-box rounded-4">
+          <div [hidden]="!showMsg">
+            <div class="modal-body success-msg">
+              <ng-lottie
+                [options]="options"
+                (animationCreated)="onAnimate($event)">
+              </ng-lottie>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 mt-3">
+          <p class="time-re">Time remaining: {{ seconds }} seconds</p>
+        </div>
+        <div class="row col-md-12 d-flex align-items-center justify-content-center">
+          <button [disabled]="doneBtnDisabled" type="submit" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                  (click)="userRedirect()" class="col-xl-3 col-md-5 fs-4 next-btn btn rounded">Comfirm
+          </button>
+        </div>
+        <div>
+          <h5 class="text-success">{{errorMsg2}}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<!--<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"-->
+<!--     aria-labelledby="staticBackdropLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog modal-dialog-centered ">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="row d-flex align-items-center">-->
+<!--        <h2 class="text-center text-success mt-3">SUCCESS</h2>-->
+<!--      </div>-->
+<!--      <div class="modal-body success-msg">-->
+<!--        <ng-lottie-->
+<!--          [options]="options"-->
+<!--          (animationCreated)="onAnimate($event)">-->
+<!--        </ng-lottie>-->
+<!--      </div>-->
+<!--      <div class="modal-footer">-->
+<!--        <div class="row col-xl-12 col-lg-12 col-md-12 d-flex align-items-center justify-content-center">-->
+<!--          <button type="submit" (click)="userLogin()" data-bs-dismiss="modal"-->
+<!--                  class="text-white col-md-4 col-xl-4 btn btn-success btn-round">DONE-->
+<!--          </button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
