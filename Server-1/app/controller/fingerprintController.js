@@ -3,7 +3,7 @@ const { ReadlineParser } = require("@serialport/parser-readline");
 const parser = new ReadlineParser({ delimiter: "\r\n" });
 
 const config = {
-    path: "COM5",
+    path: "COM7",
     baudRate: 9600,
     dataBits: 8,
     parity: "none",
