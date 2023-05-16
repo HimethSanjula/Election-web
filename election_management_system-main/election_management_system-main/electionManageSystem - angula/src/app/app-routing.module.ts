@@ -52,7 +52,7 @@ const routes: Routes = [
   {path: "party-history/:id", component: PartiesHistoryComponent},
 
   {path: '', component: AdminLoginScComponent},
-  {path: 'dash', component: DashboardComponent},
+  {path: 'dash/:id', component: DashboardComponent},
 
 
 ];

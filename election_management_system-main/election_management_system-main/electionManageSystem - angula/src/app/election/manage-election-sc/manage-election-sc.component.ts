@@ -54,7 +54,7 @@ export class ManageElectionScComponent implements OnInit {
   getEndElectionModel = new getEndElections(false);
 
   getElections() {
-    this.getEndElectionModel.is_ended = true;
+    this.getEndElectionModel.is_ended = false;
     this._electionService.getEndElection(this.getEndElectionModel).subscribe(
       response => {
         console.log('success', response);

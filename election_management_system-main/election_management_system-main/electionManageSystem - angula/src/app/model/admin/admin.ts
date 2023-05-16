@@ -30,3 +30,11 @@ export class adminLogin {
   ) {
   }
 }
+
+export class adminId {
+  constructor(
+    public id: string,
+  ) {
+  }
+}
+

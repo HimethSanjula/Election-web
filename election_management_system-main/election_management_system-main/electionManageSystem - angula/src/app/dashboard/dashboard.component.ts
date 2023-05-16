@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ElectionService} from "../service/election/election.service";
 import {Election, getEndElections, getStartElection} from "../model/election/election";
 import {getActiveUser} from "../model/user/user";
 import {UserService} from "../service/user/user.service";
 import {AdminService} from "../service/admin/admin.service";
-import {getActiveAdmin} from '../model/admin/admin';
+import {Admin, adminId, getActiveAdmin} from '../model/admin/admin';
 
 interface electionData {
 
@@ -20,6 +20,22 @@ interface electionData {
 
 }
 
+interface adminData {
+  _id: string,
+  first_name: string,
+  middle_name: string,
+  last_name: string,
+  email: string,
+  gender: string,
+  home_address: string,
+  city: string,
+  postal_code: string,
+  date_of_birth: string,
+  phone_number: string,
+  password: string,
+  status: string
+  __v: string
+}
 
 @Component({
   selector: 'app-dashboard',
@@ -28,16 +44,26 @@ interface electionData {
 })
 export class DashboardComponent implements OnInit {
 
+  adminId!:string;
+  adminData!: adminData[];
+
+
   ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      // @ts-ignore
+      this.adminId = params.get('id').toString();
+      console.log("adminId ",this.adminId);
+  });
     this.getStartedElection();
     this.getNewUser();
     this.getActiveUser();
     this.getActiveAdmin();
     this.getActiveElections();
     this.getEndElections();
+    this.getLoginAdmin();
   }
 
-  constructor(private router: Router, private _adminService: AdminService, private _userService: UserService, private _electionService: ElectionService) {
+  constructor(private router: Router,private route:ActivatedRoute, private _adminService: AdminService, private _userService: UserService, private _electionService: ElectionService) {
   }
 
   getStartElectionModel = new getStartElection(false);
@@ -45,6 +71,8 @@ export class DashboardComponent implements OnInit {
   activeUser = new getActiveUser(false, false)
   activeAdmin = new getActiveAdmin(false);
   getEndElectionModel = new getEndElections(false);
+  getLoginAdminModel = new adminId("");
+  adminModel = new Admin("", "", "", "", "", "", "", "", "", "", "");
 
   electionData!: electionData[];
   name: string | undefined = "Not Started";
@@ -106,6 +134,18 @@ export class DashboardComponent implements OnInit {
       response => {
         console.log('success', response);
         this.activeAdminCount = response.length;
+      }, error => {
+        console.log('failed', error);
+      }
+    );
+  }
+
+  getLoginAdmin() {
+    this.getLoginAdminModel.id = this.adminId;
+    this._adminService.getLoginAdmin(this.adminId).subscribe(
+      response => {
+        console.log('success', response);
+        this.adminModel = response;
       }, error => {
         console.log('failed', error);
       }

@@ -7,7 +7,6 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,
-    "noImplicitAny": false,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
@@ -19,6 +18,7 @@
     "importHelpers": true,
     "target": "es2020",
     "module": "es2020",
+    "noImplicitAny": false,
     "lib": [
       "es2020",
       "dom"

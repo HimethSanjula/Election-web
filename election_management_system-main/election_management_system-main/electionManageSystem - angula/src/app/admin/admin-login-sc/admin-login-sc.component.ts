@@ -31,7 +31,7 @@ export class AdminLoginScComponent {
          this.adminId = response[0]['_id'];
          console.log("login success", this.adminId);
         this.showContent = true;
-          this.router.navigate([`dash`]);
+          this.router.navigate([`dash/`+ this.adminId]);
         } else {
           console.log("login fail");
          this.errMsg = "login Unsuccessfully!"

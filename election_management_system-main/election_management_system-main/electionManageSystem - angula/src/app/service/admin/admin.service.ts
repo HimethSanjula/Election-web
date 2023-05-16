@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Admin, adminLogin, getActiveAdmin} from "../../model/admin/admin";
+import {Admin, adminId, adminLogin, getActiveAdmin} from "../../model/admin/admin";
 import {getActiveUser} from "../../model/user/user";
 
 @Injectable({
@@ -52,6 +52,20 @@ export class AdminService {
     };
 
     return this._http.post<any>(this._url+'/api/adminsby',active,httpOptions);
+  }
+
+  getLoginAdmin(loginAdmin: string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'http://localhost:4200',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+
+      }),
+    };
+
+    return this._http.get<any>(this._url+'/api/admin/'+loginAdmin,httpOptions);
   }
 
   updateAdmin(id: string,admin:Admin) {
