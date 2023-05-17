@@ -31,7 +31,6 @@ export class WelcomeScComponent implements OnInit {
   }
 
   fogrotPass() {
-    this.router.navigate([`user-login`]);
   }
 
   electionResult(id:any) {
@@ -74,6 +73,7 @@ export class WelcomeScComponent implements OnInit {
       }
     );
   }
+
 
 
 }

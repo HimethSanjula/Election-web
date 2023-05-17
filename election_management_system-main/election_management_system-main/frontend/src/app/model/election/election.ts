@@ -48,3 +48,11 @@ export class getCandiVote {
   ) {
   }
 }
+
+export class getEndElections {
+  constructor(
+    public is_ended: boolean,
+
+) {
+  }
+}

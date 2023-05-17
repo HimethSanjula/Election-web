@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {getStartElection} from "../../model/election/election";
+import {getEndElections, getStartElection} from "../../model/election/election";
 
 
 @Injectable({
@@ -51,6 +51,20 @@ export class ElectionService {
     };
 
     return this._http.post<any>(this._url + '/api/electionsby', startElec, httpOptions);
+  }
+
+  getEndElection(endElec: getEndElections) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': 'http://localhost:4200',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+
+      }),
+    };
+
+    return this._http.post<any>(this._url + '/api/electionsby', endElec, httpOptions);
   }
 
 }

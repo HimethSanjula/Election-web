@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
 import {ElectionService} from "../../service/election/election.service";
-import {Election} from "../../model/election/election";
+import {Election, getEndElections} from "../../model/election/election";
 
 
 interface electionData {
@@ -37,14 +37,17 @@ export class ElectionScComponent {
   }
 
   electionModel = new Election("", "", "", "", "", "", "")
+  getEndElectionModel = new getEndElections(false);
 
+
+ 
   getElections() {
-    this._electionService.getElections().subscribe(
+    this.getEndElectionModel.is_ended = false;
+    this._electionService.getEndElection(this.getEndElectionModel).subscribe(
       response => {
         console.log('success', response);
-        this.electionModel = response;
         this.electionData = response;
-        console.log(this.electionModel)
+        this.electionModel = response;
       }, error => {
         console.log('failed', error);
       }

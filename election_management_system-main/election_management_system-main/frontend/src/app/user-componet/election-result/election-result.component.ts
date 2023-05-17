@@ -6,7 +6,8 @@ import {CandidateService} from "../../service/candidate/candidate.service";
 import {PartieService} from "../../service/partie/partie.service";
 import {getPartyElectionBy} from "../../model/partie/partie";
 import {getCandidatesByParty} from "../../model/candidate/candidate";
-import {electionId, getCandiVote} from "../../model/election/election";
+import {Election, electionId, getCandiVote} from "../../model/election/election";
+import { ElectionService } from 'src/app/service/election/election.service';
 
 Chart.register(...registerables);
 
@@ -36,6 +37,7 @@ export interface getCandidatesParty {
   _id: string
 
 }
+
 @Component({
   selector: 'app-election-result',
   templateUrl: './election-result.component.html',
@@ -55,13 +57,15 @@ export class ElectionResultComponent implements OnInit{
   countArray: any[]=[];
   candiCountArray: any[]=[];
 
-  constructor(private _candidateservice: CandidateService, private route: ActivatedRoute, private _partieService: PartieService, private _voteService: VoteService) {
+  constructor(private _candidateservice: CandidateService,private _electionService: ElectionService, private route: ActivatedRoute, private _partieService: PartieService, private _voteService: VoteService) {
   }
 
   getPartyByElectionIdModel = new getPartyElectionBy("");
   getCandidatesByPartyModel = new getCandidatesByParty("");
   electionIdModel = new electionId("");
   getCandiVoteModel = new getCandiVote("", "");
+  electionModel = new Election("", "", "", "", "", "", "");
+
   ngOnInit(): void {
     this.time();
     this.route.paramMap.subscribe(params => {
@@ -71,6 +75,19 @@ export class ElectionResultComponent implements OnInit{
 
     })
     this.getPartiesByElection();
+    this.getElection();
+  }
+
+  getElection() {
+    this._electionService.getElection(this.election_id).subscribe(
+      response => {
+        console.log('success', response);
+        this.electionModel = response;
+        console.log(this.electionModel)
+      }, error => {
+        console.log('failed', error);
+      }
+    );
   }
 
   getPartiesByElection() {
