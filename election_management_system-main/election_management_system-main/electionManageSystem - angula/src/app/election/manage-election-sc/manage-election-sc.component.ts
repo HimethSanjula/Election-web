@@ -33,6 +33,7 @@ export class ManageElectionScComponent implements OnInit {
   // @ts-ignore
   startButtonShowB!:boolean = false;
   startElectionId!:string;
+  btnd:boolean = false;
 
   @ViewChild('electionDetails') form: NgForm | undefined;
 
@@ -111,9 +112,9 @@ export class ManageElectionScComponent implements OnInit {
           this.startButtonShowB = true;
           console.log(this.startButtonShowB);
           this.startButtonShow(this.startElectionId);
+          this.btnd = true;
         } else {
-          console.log(this.startButtonShowB);
-          this.startButtonShow(this.startElectionId);
+         
         }
       }, error => {
         console.log('failed', error);
@@ -136,6 +137,8 @@ export class ManageElectionScComponent implements OnInit {
         const startButtons = document.querySelectorAll(".start-btn") as NodeListOf<HTMLButtonElement>;
         startButtons.forEach(button => {
           button.disabled = false;
+          this.btnd = false;
+          this.getElections();
         });
       }, error => {
         console.log('failed', error);
@@ -143,25 +146,14 @@ export class ManageElectionScComponent implements OnInit {
     );
   }
 
-  onSelectedPhoto(event: any) {
-    this.selectedFile = event.target.files[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      const base64String = reader.result as string;
-      this.electionModel.image_name = base64String;
-    }
-    reader.readAsDataURL(this.selectedFile);
 
+  startBtnOff(){
+    const startButtons = document.querySelectorAll(".start-btn") as NodeListOf<HTMLButtonElement>;
+      startButtons.forEach(button => {
+        if (button.dataset['electionId'] !== this.startElectionId) {
+          button.disabled = true;
+        }
+      });
   }
-
-  convertBase64ToBlob(base64: string): Blob {
-    const binaryString = atob(base64);
-    const bytes = new Uint8Array(binaryString.length);
-    for (let i = 0; i < binaryString.length; i++) {
-      bytes[i] = binaryString.charCodeAt(i);
-    }
-    return new Blob([bytes], {type: 'image/*'}); // Change the type according to your image format
-  }
-
 
 }

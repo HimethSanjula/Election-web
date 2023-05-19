@@ -53,6 +53,8 @@ const routes: Routes = [
 
   {path: '', component: AdminLoginScComponent},
   {path: 'dash/:id', component: DashboardComponent},
+  {path: 'dash', component: DashboardComponent},
+
 
 
 ];

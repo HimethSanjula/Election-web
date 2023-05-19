@@ -28,7 +28,7 @@
           <tr *ngFor="let electionData of electionData">
             <td class="text-success">
               <div class="d-flex align-items-center gap-2">
-                <button [hidden]="buttonState[electionData._id]" (click)="startButton(electionData._id)" class="btn start-btn" data-bs-toggle="modal"
+                <button [disabled]="btnd" [hidden]="buttonState[electionData._id]" (click)="startButton(electionData._id)" class="btn start-btn" data-bs-toggle="modal"
                         data-bs-target="#start">START
                 </button>
                 <button [hidden]="!buttonState[electionData._id]" (click)="stopButton(electionData._id)" class="btn remove-btn" data-bs-toggle="modal"

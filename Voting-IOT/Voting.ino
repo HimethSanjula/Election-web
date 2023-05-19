@@ -81,7 +81,7 @@ uint8_t getFingerprintEnroll() {
 
   int p = -1;
   Serial.print("Waiting for valid finger to enroll as #"); 
-  Serial.println(id);// me kotasen id eka pass wenawa
+  Serial.println(id);//  ID is passed to database
   while (p != FINGERPRINT_OK) {
     p = finger.getImage();
     switch (p) {
@@ -134,7 +134,7 @@ uint8_t getFingerprintEnroll() {
     p = finger.getImage();
   }
   //Serial.print("ID ");
-  //Serial.println(id);// me kotasen id eka pass wenawa
+  //Serial.println(id);//  ID is passed to database
   p = -1;
   //Serial.println("Place same finger again");
   while (p != FINGERPRINT_OK) {
@@ -184,7 +184,7 @@ uint8_t getFingerprintEnroll() {
 
   // OK converted!
   //Serial.print("Creating model for #"); 
-  //Serial.println(id);// me kotasen id eka pass wenawa
+  //Serial.println(id);//  ID is passed to database
 
   p = finger.createModel();
   if (p == FINGERPRINT_OK) {
@@ -282,7 +282,7 @@ uint8_t getFingerprintID() {
 
   // found a match!
   //Serial.print("");
-  Serial.println(finger.fingerID);// me kotasen id eka pass wenawa
+  Serial.println(finger.fingerID);//  ID is passed to database
   //Serial.print(" with confidence of ");
   //Serial.println(finger.confidence);
 
@@ -300,7 +300,7 @@ int getFingerprintIDez() {
   if (p != FINGERPRINT_OK)  return -1;
 
   // found a match!
-  //Serial.print("Found ID #g"); // me kotasen id eka pass wenawa
+  //Serial.print("Found ID #g"); // ID is passed to database
   Serial.println(finger.fingerID);
   //Serial.print(" with confidence of "); 
   //Serial.println(finger.confidence);

@@ -153,7 +153,8 @@ export class DashboardComponent implements OnInit {
   }
 
   getActiveElections() {
-    this._electionService.getElections().subscribe(
+    this.getEndElectionModel.is_ended = false;
+    this._electionService.getEndElection(this.getEndElectionModel).subscribe(
       response => {
         console.log('success', response);
         this.activeElectionCount = response.length;

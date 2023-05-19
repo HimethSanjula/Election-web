@@ -48,8 +48,9 @@ export class getStartElectionIs {
 
 export class getEndElections {
   constructor(
-    public is_ended: boolean
-  ) {
+    public is_ended: boolean,
+
+) {
   }
 }
 
